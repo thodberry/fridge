@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  background: #0b0714;
+  color: #fff;
+}
+
+body {
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+}
+
+body.unlocked {
+  overflow: auto;
+  height: auto;
+  min-height: 100%;
+}
+
+#confetti-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 2147483647;
+  pointer-events: none;
+}
+
+/* ============ Music toggle ============ */
+.music-btn {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 64px);
+  right: 10px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.music-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* ============ Intro / video overlay ============ */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 10;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100dvh;
+  object-fit: cover;
+  background: #000;
+}
+
+.hint {
+  position: absolute;
+  bottom: 12vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  animation: float 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-12px);
+  }
+}
+
+/* ============ Gallery ============ */
+.gallery {
+  margin: 0 auto;
+  padding: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.gallery.show {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.img-wrap {
+  padding: 0;
+  margin: 0;
+  line-height: 0;
+}
+
+.img-wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ============ Dance banner ============ */
+.dance-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.dance-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #000;
+}
+
+.dance-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 24px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.dance-title {
+  font-size: clamp(28px, 8vw, 60px);
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.dance-tagline {
+  font-size: clamp(14px, 3.5vw, 18px);
+  letter-spacing: 2px;
+  color: #ffd36e;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.dance-fun {
+  font-size: clamp(12px, 3vw, 15px);
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.gallery.show .img-wrap img {
+  animation: fade-up 0.9s ease both;
+}
+
+.gallery.show .img-wrap:nth-child(1) img {
+  animation-delay: 0s;
+}
+
+.gallery.show .img-wrap:nth-child(2) img {
+  animation-delay: 0.2s;
+}
+
+.gallery.show .img-wrap:nth-child(3) img {
+  animation-delay: 0.4s;
+}
+
+.gallery.show .img-wrap:nth-child(4) img {
+  animation-delay: 0.6s;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============ Floating cakes ============ */
+.cake-emoji {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  line-height: 1;
+  animation: cake-pop 1.4s ease forwards;
+}
+
+@keyframes cake-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -30%) scale(0.3) rotate(-15deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(-50%, -60%) scale(1.2) rotate(8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -150%) scale(1) rotate(0deg);
+  }
+}
