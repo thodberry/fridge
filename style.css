@@ -214,19 +214,19 @@ body.unlocked {
   animation: fade-up 0.9s ease both;
 }
 
-.gallery.show .img-wrap:nth-child(1) img {
+.gallery.show .img-wrap:nth-child(2) img {
   animation-delay: 0s;
 }
 
-.gallery.show .img-wrap:nth-child(2) img {
+.gallery.show .img-wrap:nth-child(3) img {
   animation-delay: 0.2s;
 }
 
-.gallery.show .img-wrap:nth-child(3) img {
+.gallery.show .img-wrap:nth-child(4) img {
   animation-delay: 0.4s;
 }
 
-.gallery.show .img-wrap:nth-child(4) img {
+.gallery.show .img-wrap:nth-child(5) img {
   animation-delay: 0.6s;
 }
 
